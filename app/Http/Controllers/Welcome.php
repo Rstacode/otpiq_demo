@@ -3,7 +3,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Cache;
 use Livewire\Component;
-use Rstacode\Otpiq\DTOs\SmsData;
 use Rstacode\Otpiq\Facades\Otpiq;
 use WireUi\Traits\WireUiActions;
 
@@ -19,12 +18,18 @@ class Welcome extends Component
         $this->validate([
             'apiKey' => 'required|string|min:20',
         ]);
+
+        if (strpos($this->apiKey, 'sk_live_') !== 0) {
+            $this->addError('apiKey', 'API Key is invalid!');
+            return;
+        }
         Cache::put('otpiq_api_key', $this->apiKey, now()->addHours(24));
         $this->reset('apiKey');
         $this->dispatch('notify', [
             'message' => 'API Key set successfully!',
             'type'    => 'success',
         ]);
+
     }
 
     public function removeApiKey()
@@ -59,12 +64,13 @@ class Welcome extends Component
     {
         $this->callApiKey();
         try {
-            $response = Otpiq::sendSms(new SmsData(
-                phoneNumber: $this->phoneNumber,
-                smsType: 'verification',
-                provider: $this->provider,
-                verificationCode: $this->verificationCode
-            ));
+            $response = Otpiq::sendSms([
+                'phoneNumber'      => $this->phoneNumber,
+                'smsType'          => 'verification',
+                'verificationCode' => $this->verificationCode,
+                'provider'         => $this->provider,
+            ]);
+
             return dd($response);
         } catch (\Exception $exception) {
             return dd($exception->getMessage());
@@ -74,12 +80,15 @@ class Welcome extends Component
     {
         $this->callApiKey();
         try {
-            $response = Otpiq::sendSms(new SmsData(
-                phoneNumber: $this->phoneNumber,
-                smsType: 'custom',
-                customMessage: $this->customMessage,
-                senderId: $this->senderId,
-            ));
+            $response = Otpiq::sendSms([
+                'phoneNumber'   => $this->phoneNumber,
+                'smsType'       => 'custom',
+                'customMessage' => $this->customMessage,
+                'senderId'      => $this->senderId,
+                'provider'      => 'sms', // Required for custom messages
+            ]);
+
+            return dd($response);
         } catch (\Exception $exception) {
             return dd($exception->getMessage());
         }

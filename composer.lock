@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5169248da8246a4174fa7e8b0d526e1c",
+    "content-hash": "6d47c8005ba068e1d256dcccbf9e7247",
     "packages": [
         {
             "name": "blade-ui-kit/blade-icons",
@@ -3529,16 +3529,16 @@
         },
         {
             "name": "rstacode/otpiq",
-            "version": "v1.0.3",
+            "version": "v1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Rstacode/otpiq.git",
-                "reference": "1faac3d576c4ed240fa98bc94280d84214505f7c"
+                "reference": "356ab1614a6995c49141869c9e7b3a739ae42568"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Rstacode/otpiq/zipball/1faac3d576c4ed240fa98bc94280d84214505f7c",
-                "reference": "1faac3d576c4ed240fa98bc94280d84214505f7c",
+                "url": "https://api.github.com/repos/Rstacode/otpiq/zipball/356ab1614a6995c49141869c9e7b3a739ae42568",
+                "reference": "356ab1614a6995c49141869c9e7b3a739ae42568",
                 "shasum": ""
             },
             "require": {
@@ -3547,8 +3547,8 @@
                 "php": "^8.1"
             },
             "require-dev": {
-                "orchestra/testbench": "^9.9",
-                "phpunit/phpunit": "^11.5"
+                "mockery/mockery": "^1.5",
+                "phpunit/phpunit": "^10.0"
             },
             "type": "library",
             "extra": {
@@ -3562,6 +3562,9 @@
                 }
             },
             "autoload": {
+                "files": [
+                    "config/otpiq.php"
+                ],
                 "psr-4": {
                     "Rstacode\\Otpiq\\": "src/"
                 }
@@ -3593,7 +3596,7 @@
                 "issues": "https://github.com/rstacode/otpiq/issues",
                 "source": "https://github.com/rstacode/otpiq"
             },
-            "time": "2025-01-30T19:05:56+00:00"
+            "time": "2025-01-31T21:11:29+00:00"
         },
         {
             "name": "symfony/clock",
@@ -7305,16 +7308,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "11.5.5",
+            "version": "11.5.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "b9a975972f580c0491f834eb0818ad2b32fd8bba"
+                "reference": "3c3ae14c90f244cdda95028c3e469028e8d1c02c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/b9a975972f580c0491f834eb0818ad2b32fd8bba",
-                "reference": "b9a975972f580c0491f834eb0818ad2b32fd8bba",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/3c3ae14c90f244cdda95028c3e469028e8d1c02c",
+                "reference": "3c3ae14c90f244cdda95028c3e469028e8d1c02c",
                 "shasum": ""
             },
             "require": {
@@ -7386,7 +7389,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
                 "security": "https://github.com/sebastianbergmann/phpunit/security/policy",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/11.5.5"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/11.5.6"
             },
             "funding": [
                 {
@@ -7402,7 +7405,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-01-29T14:01:11+00:00"
+            "time": "2025-01-31T07:03:30+00:00"
         },
         {
             "name": "sebastian/cli-parser",
